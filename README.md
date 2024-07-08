@@ -68,7 +68,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 composer create-project laravel/laravel example-app
   $table->enum('role',['user','admin']);
 php artisan migrate
-https://github.com/phptechlife/book-review-app-html
+//github.com/phptechlife/book-review-app-html
 php artisan make:controller AccountController
 php artisan make:view account/register
 
