@@ -64,3 +64,66 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+composer create-project laravel/laravel example-app
+  $table->enum('role',['user','admin']);
+php artisan migrate
+https://github.com/phptechlife/book-review-app-html
+php artisan make:controller AccountController
+php artisan make:view account/register
+
+ public function register()
+    {
+        return view('account.register');
+    }
+
+Route::get('account/register',[AccountController::class,'register'])->name('account.register');
+
+copyimages/css to public
+
+{{ asset('css/style.css')}}
+
+public function processRegister(Request $request)
+    {
+
+        $validator = Validator::make($request->all(),[
+            'name' => 'required|min:3',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:5',
+            'password_confirmation' => 'required|confirmed'
+        ]);
+
+        if($validator->fails())
+        {
+            return redirect()->route('account.register')->withInput()->withErrors($validator);
+        }
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->password_confirmation = Hash::make($request->password_confirmation);
+        $user->save();
+    }
+
+   @error('name')
+                                                <p class="invalid-feedback">{{ $message}}</p>
+                                                @enderror
+
+Route::post('account/register',[AccountController::class,'procesRegister'])->name('account.procesRegister');
+
+                                <form action="{{ route('account.procesRegister')}}" method="post">
+
+php arisan mek:view layouts/app
+
+
+Route::group(['prefix' => 'account'], function()
+{
+    Route::group(['middleware' => 'guest'],function(){
+
+    });
+
+    Route::group(['middleware' => 'auth'],function(){
+
+    });
+});
