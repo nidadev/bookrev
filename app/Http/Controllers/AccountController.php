@@ -72,4 +72,9 @@ class AccountController extends Controller
     {
         return view('account.profile'); 
     }
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('account.login')->with('success','successfully logout');
+    }
 }
