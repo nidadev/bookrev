@@ -25,6 +25,7 @@ Route::post('login',[AccountController::class,'authenticate'])->name('account.au
     Route::group(['middleware' => 'auth'],function(){
         Route::get('profile',[AccountController::class,'profile'])->name('account.profile');
         Route::get('logout',[AccountController::class,'logout'])->name('account.logout');
+        Route::post('updateProfile',[AccountController::class,'updateProfile'])->name('account.updateProfile');
 
 
     });
