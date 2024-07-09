@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Book Review App</title>
+        <title></title>
         <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ asset('css/style.css')}}">
     </head>
@@ -13,8 +13,14 @@
                 <div class="d-flex justify-content-between">
                     <h1 class="text-center"><a href="index.html" class="h3 text-white text-decoration-none">Book Review App</a></h1>
                     <div class="d-flex align-items-center navigation">
-                        <a href="login.html" class="text-white">Login</a>
-                    <a href="register.html" class="text-white ps-2">Register</a>
+                        @if(Auth::check())
+                        <a href="{{route('account.profile')}}" class="text-white">Account</a>
+
+                        @else
+                        <a href="{{route('account.login')}}" class="text-white">Login</a>
+                        <a href="{{route('account.register')}}" class="text-white ps-2">Register</a>
+                        @endif
+                        
                     </div>
                 </div>
             </div>
